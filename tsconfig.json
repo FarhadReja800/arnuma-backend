@@ -1,24 +1,25 @@
 {
   "compilerOptions": {
+    "target": "ES2022",
+    "module": "CommonJS",
+    "moduleResolution": "node10",
+
     "rootDir": "./src",
     "outDir": "./dist",
-    "module": "nodenext",
-    "target": "esnext",
-    "types": ["node"],
-    "lib": ["es2020"],
+
+    "strict": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "resolveJsonModule": true,
+
     "sourceMap": true,
     "declaration": true,
-    "declarationMap": true,
-    "strict": true,
-    "jsx": "react-jsx",
-    "verbatimModuleSyntax": true,
-    "isolatedModules": true,
-    "noUncheckedSideEffectImports": true,
-    "moduleDetection": "force",
+    "types": ["node"],
+
     "skipLibCheck": true,
-    "esModuleInterop": true,
-    "resolveJsonModule": true
+
+    "ignoreDeprecations": "6.0"
   },
-  "include": ["src/**/*.ts", "src/**/*.tsx", "src/app/interfaces"],
+  "include": ["src/**/*"],
   "exclude": ["node_modules", "dist"]
 }
