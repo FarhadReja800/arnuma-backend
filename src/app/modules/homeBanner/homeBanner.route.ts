@@ -15,7 +15,7 @@ router.post("/create-banner", homeBannerController.createBanner);
 // Update Banner
 router.patch("/update-banner/:id", homeBannerController.updatedBanner);
 
-// // Delete Banner
-// router.delete("/delete-banner/:id", homeBannerController.deleteBanner);
+// Delete Banner
+router.delete("/delete-banner/:id", homeBannerController.deleteBanner);
 
 export const HomeBannerRoutes = router;

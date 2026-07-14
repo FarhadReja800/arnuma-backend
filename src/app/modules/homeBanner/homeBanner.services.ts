@@ -24,10 +24,15 @@ const updateBannerService = async (id: string, payload: Partial<THomeBanner>) =>
   });
   return result;
 };
+const deleteBannerService = async (id: string) => {
+  const result = await HomeBanner.findByIdAndDelete(id);
+  return result;
+};
 
 export const homeBannerService = {
   createBannerService,
   getBannerService,
   getBannerCountService,
   updateBannerService,
+  deleteBannerService,
 };

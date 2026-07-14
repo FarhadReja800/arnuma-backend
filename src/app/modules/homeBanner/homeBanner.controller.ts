@@ -72,10 +72,33 @@ export const updatedBanner = async (req: Request, res: Response, next: NextFunct
     next(error);
   }
 };
+export const deleteBanner = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const { id } = req.params;
+    const result = await homeBannerService.deleteBannerService(id as string);
+
+    if (!result) {
+      return res.status(httpStatus.NOT_FOUND).json({
+        success: false,
+        message: "Banner not found",
+      });
+    }
+
+    res.status(httpStatus.OK).json({
+      success: true,
+      message: "Banner deleted successfully",
+      data: result,
+    });
+  } catch (error: any) {
+    next(error);
+  }
+};
 
 export const homeBannerController = {
   createBanner,
   getBanner,
   updatedBanner,
+  deleteBanner,
 };
+
 
