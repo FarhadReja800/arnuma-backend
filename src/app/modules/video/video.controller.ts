@@ -52,9 +52,26 @@ const deleteHomeVideo = catchAsync(async (req: Request, res: Response) => {
   });
 });
 
+const uploadVideo = catchAsync(async (req: Request, res: Response) => {
+  const file = req.file || (req.files && Array.isArray(req.files) ? req.files[0] : undefined);
+  if (!file) {
+    throw new Error("No video file provided for upload.");
+  }
+
+  sendResponse(res, {
+    statusCode: 200,
+    success: true,
+    message: "Video uploaded successfully",
+    data: {
+      url: file.path,
+    },
+  });
+});
+
 export const HomeVideoController = {
   createHomeVideo,
   getHomeVideo,
   updateHomeVideo,
   deleteHomeVideo,
+  uploadVideo,
 };

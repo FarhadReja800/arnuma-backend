@@ -20,7 +20,7 @@ const updateHomeVideo = async (
   payload: Partial<THomeVideo>
 ) => {
   return await HomeVideo.findByIdAndUpdate(id, payload, {
-    new: true,
+    returnDocument: "after",
     runValidators: true,
   });
 };

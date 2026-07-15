@@ -47,9 +47,39 @@ export const loginUser = async (req: Request, res: Response, next: NextFunction)
   }
 };
 
+export const createStaff = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const user = await userService.createStaffService(req.body);
+
+    res.status(httpStatus.CREATED).json({
+      success: true,
+      message: "Staff member created successfully",
+      data: user,
+    });
+  } catch (error: any) {
+    next(error);
+  }
+};
+
+export const updateUserRole = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const user = await userService.updateUserRoleService(req.body);
+
+    res.status(httpStatus.OK).json({
+      success: true,
+      message: "User role updated successfully",
+      data: user,
+    });
+  } catch (error: any) {
+    next(error);
+  }
+};
+
 export const userController = {
   createUser,
-  loginUser
+  loginUser,
+  createStaff,
+  updateUserRole,
 };
 
 

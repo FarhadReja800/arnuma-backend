@@ -1,11 +1,11 @@
 import { Router } from "express";
-import { userRoutes } from "../modules/user/user.route.js";
-import { HomeBannerRoutes } from "../modules/homeBanner/homeBanner.route.js";
-import { BenefitRoutes } from "../modules/benefit/benefit.route.js";
-import { CategoryRoutes } from "../modules/category/category.route.js";
-import { ProductRoutes } from "../modules/product/product.route.js";
-import { NewCollectionRoutes } from "../modules/newCollection/newCollection.route.js";
-import { HomeVideoRoutes } from "../modules/video/video.route.js";
+import { userRoutes } from "../modules/user/user.route";
+import { HomeBannerRoutes } from "../modules/homeBanner/homeBanner.route";
+import { BenefitRoutes } from "../modules/benefit/benefit.route";
+import { CategoryRoutes } from "../modules/category/category.route";
+import { ProductRoutes } from "../modules/product/product.route";
+import { NewCollectionRoutes } from "../modules/newCollection/newCollection.route";
+import { HomeVideoRoutes } from "../modules/video/video.route";
 
 
 export const router = Router();

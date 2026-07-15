@@ -1,12 +1,19 @@
 import express from "express";
 import { HomeVideoController } from "./video.controller";
 import validateRequest from "../../middlewares/validateRequest";
+import { upload } from "../../middlewares/upload";
 import {
   createHomeVideoValidation,
   updateHomeVideoValidation,
 } from "./video.validation";
 
 const router = express.Router();
+
+router.post(
+  "/upload-video",
+  upload.any(),
+  HomeVideoController.uploadVideo
+);
 
 router.post(
   "/create-video",

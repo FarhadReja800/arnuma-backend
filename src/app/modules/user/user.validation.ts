@@ -87,3 +87,42 @@ export const createUserValidationSchema = z.object({
       .min(1, "At least one authentication method is required"),
   }),
 });
+
+export const createStaffValidationSchema = z.object({
+  body: z.object({
+    name: z
+      .string({
+        required_error: "Name is required",
+      })
+      .min(2, "Name must be at least 2 characters"),
+    email: z
+      .string({
+        required_error: "Email is required",
+      })
+      .email("Invalid email address"),
+    password: z
+      .string({
+        required_error: "Password is required",
+      })
+      .min(6, "Password must be at least 6 characters"),
+    role: z.enum([TUserRoles.ADMIN, TUserRoles.SUPER_ADMIN, TUserRoles.MODERATOR, TUserRoles.MANAGER], {
+      required_error: "Role is required and must be admin, super-admin, manager, or moderator",
+    }),
+    profilePicture: z.string().optional(),
+    address: z.string().optional(),
+    phoneNumber: z.string().optional(),
+  }),
+});
+
+export const updateUserRoleValidationSchema = z.object({
+  body: z.object({
+    userId: z
+      .string({
+        required_error: "User ID is required",
+      })
+      .min(1, "User ID is required"),
+    role: z.nativeEnum(TUserRoles, {
+      required_error: "Role is required",
+    }),
+  }),
+});

@@ -15,7 +15,8 @@ dotenv.config();
 
 import type { Server } from "http";
 import mongoose from "mongoose";
-import app from "./app.js";
+import app from "./app";
+import { seedSuperAdmin } from "./app/DB/seedSuperAdmin";
 
 let server: Server;
 
@@ -31,6 +32,7 @@ const startServer = async () => {
   try {
     await mongoose.connect(MONGO_URI);
     console.log("Connected to MongoDB");
+    await seedSuperAdmin();
   } catch (error) {
     console.error("Error connecting to MongoDB:", error);
     process.exit(1);

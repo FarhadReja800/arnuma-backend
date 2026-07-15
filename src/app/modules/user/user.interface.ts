@@ -4,7 +4,8 @@ export enum TUserRoles {
   USER = "user",
   ADMIN = "admin",
   SUPER_ADMIN = "super-admin",
-  MODERATOR = "moderator"
+  MODERATOR = "moderator",
+  MANAGER = "manager"
 }
 
 export enum TIsActiveStatus {

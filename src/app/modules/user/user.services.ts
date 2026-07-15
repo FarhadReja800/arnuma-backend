@@ -1,6 +1,8 @@
 import bcrypt from "bcryptjs";
+import httpStatus from "http-status-codes";
 import jwt, { SignOptions } from "jsonwebtoken";
-import { config } from "../../config/env.js";
+import { config } from "../../config/env";
+import AppError from "../../errors/AppError";
 import { TUser } from "./user.interface";
 import { User } from "./user.model";
 
@@ -45,7 +47,36 @@ const loginUserService = async (payload : Partial<TUser>) => {
   };
 }
 
+const createStaffService = async (payload: Partial<TUser>) => {
+  const isEmailExists = await User.findOne({ email: payload.email });
+  if (isEmailExists) {
+    throw new AppError(httpStatus.BAD_REQUEST, "User with this email already exists");
+  }
+
+  // Force isVerified to be true since it's created by super-admin
+  payload.isVerified = true;
+
+  const result = await User.create(payload);
+  return result;
+};
+
+const updateUserRoleService = async (payload: { userId: string; role: TUser["role"] }) => {
+  const { userId, role } = payload;
+
+  const user = await User.findById(userId);
+  if (!user) {
+    throw new AppError(httpStatus.NOT_FOUND, "User not found");
+  }
+
+  user.role = role;
+  await user.save();
+
+  return user;
+};
+
 export const userService = {
   createUserService,
   loginUserService,
+  createStaffService,
+  updateUserRoleService,
 };
