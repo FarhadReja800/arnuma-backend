@@ -6,6 +6,7 @@ import { CategoryRoutes } from "../modules/category/category.route";
 import { ProductRoutes } from "../modules/product/product.route";
 import { NewCollectionRoutes } from "../modules/newCollection/newCollection.route";
 import { HomeVideoRoutes } from "../modules/video/video.route";
+import { NewsRoutes } from "../modules/newsBloog/news.route";
 
 
 export const router = Router();
@@ -39,6 +40,10 @@ export const router = Router();
     {
         path: "/video",
         router: HomeVideoRoutes
+    },
+    {
+        path: "/news",
+        router: NewsRoutes
     }
 ]
 

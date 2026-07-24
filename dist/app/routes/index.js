@@ -9,6 +9,7 @@ const category_route_1 = require("../modules/category/category.route");
 const product_route_1 = require("../modules/product/product.route");
 const newCollection_route_1 = require("../modules/newCollection/newCollection.route");
 const video_route_1 = require("../modules/video/video.route");
+const news_route_1 = require("../modules/newsBloog/news.route");
 exports.router = (0, express_1.Router)();
 const moduleRoutes = [
     {
@@ -39,6 +40,10 @@ const moduleRoutes = [
     {
         path: "/video",
         router: video_route_1.HomeVideoRoutes
+    },
+    {
+        path: "/news",
+        router: news_route_1.NewsRoutes
     }
 ];
 moduleRoutes.forEach((route) => {

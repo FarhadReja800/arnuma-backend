@@ -25,5 +25,13 @@ const storage = new CloudinaryStorage({
   },
 });
 
+// Maximum file size allowed for uploads (500 MB)
+const MAX_UPLOAD_SIZE = 500 * 1024 * 1024;
+
 // Export the multer upload middleware
-export const upload = multer({ storage: storage });
+export const upload = multer({
+  storage: storage,
+  limits: {
+    fileSize: MAX_UPLOAD_SIZE,
+  },
+});
